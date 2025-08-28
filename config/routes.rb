@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "users#new"
-  resources :user, only: [ :new, :create ]
+  resources :users, only: [ :new, :create ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
