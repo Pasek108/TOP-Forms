@@ -1,36 +1,18 @@
-<!--
 <h1>Create new user</h1>
 
-<form action="/users" method="post" accept-charset="UTF-8" data-turbo=false>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
 
-  <label for="username">Username: </label>
-  <input type="text" id="username" name="user[username]" required>
+<%= form_with model: @user do |form| %>
+  <%= form.label :username, "Username: " %>
+  <%= form.text_field :username, placeholder: "Janusz", required: true %>
   <br>
 
-  <label for="email">Email: </label>
-  <input type="email" id="email" name="user[email]" required>
+  <%= form.label :email, "Email: " %>
+  <%= form.text_field :email, placeholder: "janusz@mail.com", required: true %>
   <br>
 
-  <label for="password">Password: </label>
-  <input type="password" id="password" name="user[password]" required>
+  <%= form.label :password, "Password: " %>
+  <%= form.password_field :password, placeholder: "v3ry_S3cREt_69", required: true %>
   <br>
 
-  <button>Submit</button>
-</form>
--->
-<%= form_tag("/users", method: "post") do %>
-  <%= label_tag("user[username]", "Username: ") %>
-  <%= text_field_tag("user[username]", nil, required: true) %>
-  <br>
-
-  <%= label_tag("user[email]", "Email: ") %>
-  <%= text_field_tag("user[email]", nil, required: true) %>
-  <br>
-
-  <%= label_tag("user[password]", "Password: ") %>
-  <%= password_field_tag("user[password]", nil, required: true) %>
-  <br>
-
-  <%= submit_tag("Submit") %>
+  <%= form.submit "Submit" %>
 <% end %>
