@@ -1,3 +1,4 @@
+<!--
 <h1>Create new user</h1>
 
 <form action="/users" method="post" accept-charset="UTF-8" data-turbo=false>
@@ -17,3 +18,19 @@
 
   <button>Submit</button>
 </form>
+-->
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag("user[username]", "Username: ") %>
+  <%= text_field_tag("user[username]", nil, required: true) %>
+  <br>
+
+  <%= label_tag("user[email]", "Email: ") %>
+  <%= text_field_tag("user[email]", nil, required: true) %>
+  <br>
+
+  <%= label_tag("user[password]", "Password: ") %>
+  <%= password_field_tag("user[password]", nil, required: true) %>
+  <br>
+
+  <%= submit_tag("Submit") %>
+<% end %>
