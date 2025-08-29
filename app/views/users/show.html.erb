@@ -1,0 +1,11 @@
+Username: <%= @user.username %><br>
+Email: <%= @user.email %><br>
+Password: <%= @user.password %><br>
+
+<br>
+<%= link_to "Edit", edit_user_path(@user) %>
+<br>
+<%= link_to "Destroy", user_path(@user), data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} %>

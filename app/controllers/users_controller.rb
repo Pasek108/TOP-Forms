@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
@@ -27,7 +35,19 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:error] = "Something went wrong"
-      render "edit", :unprocessable_entity
+      render "edit", status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+
+    if @user.destroy
+      flash[:success] = "User was successfully deleted."
+      redirect_to root_path
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to root_path
     end
   end
 
