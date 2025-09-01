@@ -1,24 +1,45 @@
-<%= form_with model: user do |form| %>
-  <%= form.label :username, "Username: " %>
-  <%= form.text_field :username, placeholder: "Janusz"%>
-  <% user.errors.full_messages_for(:username).each do |msg| %>
-    <div style="color: red"><%= msg %></div>
-  <% end %>
-  <br>
+<%= form_with model: user, class: "py-8" do |form| %>
+  <div class="flex gap-x-2 items-center mb-2 flex-wrap">
+    <%= form.label :username, "Username: ", style: "w-22" %>
+    <%= 
+      form.text_field :username, placeholder: "Janusz",  
+      class: "border rounded-md px-3 py-1 #{user.errors.any? ? 'border-red-700 border-2' : ''}"
+    %>
 
-  <%= form.label :email, "Email: " %>
-  <%= form.text_field :email, placeholder: "janusz@mail.com", required: true %>
-  <% user.errors.full_messages_for(:email).each do |msg| %>
-    <div style="color: red"><%= msg %></div>
-  <% end %>
-  <br>
+    <div class="w-full text-red-700">
+      <% user.errors.full_messages_for(:username).each do |msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    </div>
+  </div>
 
-  <%= form.label :password, "Password: " %>
-  <%= form.password_field :password, placeholder: "v3ry_S3cREt_69", required: true %>
-  <% user.errors.full_messages_for(:password).each do |msg| %>
-    <div style="color: red"><%= msg %></div>
-  <% end %>
-  <br>
+  <div class="flex gap-x-2 items-center mb-2 flex-wrap">
+    <%= form.label :email, "Email: ", style: "w-22" %>
+    <%= 
+      form.text_field :email, placeholder: "janusz@mail.com", 
+      class: "border rounded-md px-3 py-1 #{user.errors.any? ? 'border-red-700 border-2' : ''}"
+    %>
 
-  <%= form.submit "Submit" %>
+    <div class="w-full text-red-700">
+      <% user.errors.full_messages_for(:email).each do |msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flex gap-x-2 items-center mb-2 flex-wrap">
+    <%= form.label :password, "Password: ", class: "w-22" %>
+    <%= 
+      form.password_field :password, placeholder: "v3ry_S3cREt_69", 
+      class: "border rounded-md px-3 py-1 #{user.errors.any? ? 'border-red-700 border-2' : ''}"
+    %>
+
+    <div class="w-full text-red-700">
+      <% user.errors.full_messages_for(:password).each do |msg| %>
+        <div><%= msg %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form.submit "Submit", class: "mt-6 bg-green-600 text-white px-3 py-1.5 rounded-md cursor-pointer" %>
 <% end %>
