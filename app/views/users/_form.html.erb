@@ -1,6 +1,6 @@
 <%= form_with model: user, class: "py-8" do |form| %>
   <div class="flex gap-x-2 items-center mb-2 flex-wrap">
-    <%= form.label :username, "Username: ", style: "w-22" %>
+    <%= form.label :username, "Username: ", class: "w-22" %>
     <%= 
       form.text_field :username, placeholder: "Janusz",  
       class: "border rounded-md px-3 py-1 #{user.errors.any? ? 'border-red-700 border-2' : ''}"
@@ -14,7 +14,7 @@
   </div>
 
   <div class="flex gap-x-2 items-center mb-2 flex-wrap">
-    <%= form.label :email, "Email: ", style: "w-22" %>
+    <%= form.label :email, "Email: ", class: "w-22" %>
     <%= 
       form.text_field :email, placeholder: "janusz@mail.com", 
       class: "border rounded-md px-3 py-1 #{user.errors.any? ? 'border-red-700 border-2' : ''}"
