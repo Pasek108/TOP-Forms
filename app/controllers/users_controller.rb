@@ -40,11 +40,11 @@ class UsersController < ApplicationController
   def destroy
     if @user.destroy
       flash[:success] = "User was successfully deleted."
-      redirect_to root_path
     else
       flash[:error] = "Something went wrong"
-      redirect_to root_path
     end
+
+    redirect_to root_path
   end
 
   private
