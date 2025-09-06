@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, except: [ :index, :new, :create ]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @users = User.all
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     params.expect(user: [ :username, :email, :password ])
   end
 
-  def find_user
+  def set_user
     @user = User.find(params[:id])
   end
 end
